@@ -1,5 +1,7 @@
 import {calcDist, roundDecimal, mapRange} from './util/Math';
 
+// TODO: string matching, if typof is string return 1 * multiplier
+// TODO: Code splitting
 
 export default class WMA {
 
@@ -15,39 +17,44 @@ export default class WMA {
     this.matchIndex = 0;
     this._min = 0;
 
-    console.log(this);
+    // console.log(this);
   }
 
-  // add output=10
   match(obj) {
     this.results = [];
     this.obj = obj;
-    this.keys.map(({key, m}) => this._mapSource(key, m));
 
-    for (const id in this.dists) this.results.push(this._setObject(id));
+    this.keys.map(({key, m}) => this._mapSource(key, m));
+    for (const id in this.dists) this.results.push(this._setScoreObject(id));
 
     this.results.sort((a, b) => a.score - b.score).map((o, i) => {
       if (i % this.output === 0) this.matchIndex++;
-      o[`matchIndex`] = this.matchIndex;
-      o[`score`] = mapRange(o.score, this._min, this._max, 0, 100);
-      o[`matching`] = `${roundDecimal(Math.abs(o.score - 100), this.decimals)}%`;
+      const matchingPercent = roundDecimal(Math.abs(mapRange(o.score, this._min, this._max, 0, 100) - 100), this.decimals);
+
+      this._setObject(o, {
+        matchIndex: this.matchIndex,
+        score: mapRange(o.score, this._min, this._max, 0, 100),
+        matching: `${!isNaN(matchingPercent) ? matchingPercent : 0}%`
+      });
+
     });
 
     this._resetAll();
+
     return this.results;
   }
 
   _mapSource(key, m) {
     this.source.map(i => {
+      if (!(key in i)) return;
       if (i.id === this.obj.id && !this.showOriginal) return;
       if (!this.dists[i.id]) this.dists[i.id] = [];
-      const distance = calcDist(i[key], this.obj[key]) * m;
-  
-      this.dists[i.id].push(isNaN(distance) ? 0 : distance);
+
+      this.dists[i.id].push(calcDist(i[key], this.obj[key]) * m);
     });
   }
 
-  _setObject(id) {
+  _setScoreObject(id) {
     const score = this._calculateScore(id);
     this._setmax(score);
 
@@ -65,11 +72,14 @@ export default class WMA {
     if (this._max < score || this._max === undefined) this._max = score;
   }
 
+  _setObject(obj, keys) {
+    for (const key in keys) obj[key] = keys[key];
+  }
+
   _resetAll() {
     this.dists = [];
     this.matchIndex =  0;
   }
-
 }
 
 module.exports = require(`./index`).default;

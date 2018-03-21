@@ -15,11 +15,13 @@ const init = ({data}) => {
 
   const wma = new WMA({
     source: data,
+    output: 10,
     showOriginal: true,
     keys: [
       {key: `ebu`, m: 20},
       {key: `alc`, m: 50},
       {key: `cdex`, m: 80},
+      // {key: `color`, m: 2},
       {key: `bitterheid`, m: 100}
     ]
   });

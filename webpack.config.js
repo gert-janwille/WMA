@@ -1,14 +1,12 @@
-var path = require('path');
-var webpack = require('webpack');
+const path = require(`path`);
 const {removeEmpty} = require(`webpack-config-utils`);
 
 const publicPath = `/`;
-const port = 3000;
 
 const config = {
   entry: [
-    'babel-polyfill',
-    './src/index'
+    `babel-polyfill`,
+    `./src/index`
   ],
 
   resolve: {
@@ -22,12 +20,12 @@ const config = {
   output: {
     path: path.join(__dirname, `lib`),
     filename: `wma.js`,
-    library: 'WMA',
-    libraryTarget: 'umd',
+    library: `WMA`,
+    libraryTarget: `umd`,
     publicPath
   },
 
-  devtool: 'source-map',
+  devtool: `source-map`,
 
   module: {
 
@@ -53,6 +51,6 @@ const config = {
 
   }
 
-}
+};
 
 module.exports = config;
