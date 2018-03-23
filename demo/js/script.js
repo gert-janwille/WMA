@@ -22,7 +22,7 @@ const match2 = {
 
 
 const init = ({data}) => {
-  console.log(WMA);
+  
   const wma = new WMA({
     source: data,
     output: 10,
