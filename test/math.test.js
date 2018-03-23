@@ -1,4 +1,4 @@
-import {relu, calcDist, roundDecimal, mapRange} from '../src/util/Math';
+import {relu, calcDist, roundDecimal, mapRange} from '../src/math';
 
 test(`Relu 0 retuns 0.5`, () => {
   expect(relu(0)).toBe(0.5);

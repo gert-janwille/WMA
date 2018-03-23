@@ -1,6 +1,7 @@
 import WMA from '../src/';
 
 test(`Relu 0 retuns 0.5`, () => {
+  console.log(WMA);
   const wma = new WMA({
     source: [],
     output: 10,
