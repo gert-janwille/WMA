@@ -1,10 +1,14 @@
 {
   "name": "wma-matching-algorithm",
   "version": "1.0.0",
-  "description": "",
+  "description": "The WMA - Matching Algorithm is a light-weighted and fast library to match an object against an object array. Define matching keys and match. Make as many matching objects as you want.",
   "author": "Gert-Jan Wille <gertjanwille.w@gmail.com>",
   "main": "lib/wma.js",
   "module": "src/index.js",
+  "repository": {
+   "type": "git",
+   "url": "https://github.com/gert-janwille/WMA"
+ },
   "directories": {
     "test": "test"
   },
@@ -35,5 +39,19 @@
     "webpack": "^2.2.0",
     "webpack-config-utils": "^2.3.0"
   },
+  "keywords": [
+        "matching algorithm",
+        "match",
+        "algorithm",
+        "javascript",
+        "library",
+        "object matching",
+        "filtering",
+        "object",
+        "object array",
+        "node",
+        "wma",
+        "filter"
+    ],
   "license": "MIT"
 }
