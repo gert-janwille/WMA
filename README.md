@@ -19,21 +19,21 @@
 
 Install with npm:
 ```bash
-$ npm install --save-dev WMA
+$ npm install --save-dev wma-matching-algorithm
 ```
 
 Install with yarn:
 ```bash
-$ yarn add WMA --dev
+$ yarn add wma-matching-algorithm --dev
 ```
 ## Usage
 
 ### `Import the library`
 
 ```javascript
-import WMA from 'WMA' //ES6
+import WMA from 'wma-matching-algorithm' //ES6
 //or
-var WMA = require('WMA'); //nodejs
+var WMA = require('wma-matching-algorithm'); //nodejs
 ```
 
 or download the lib folder and add the script tag:
