@@ -43,6 +43,7 @@ or download the lib folder and add the script tag:
 
 > Tip: If you use a script tag pleas add this before closing the body tag.
 
+<br/>
 
 ### `Declare a new instance`
 Making new instance of the WMA Class
@@ -97,8 +98,9 @@ keys: [
 ```
 You can define as many keys as you want. The multiplier can have a positive or negative number.
 
+<br/>
 
-### Match
+### `Match`
 The match is a function that allows you to match any object to the defined object array.
 
 ```javascript
@@ -121,6 +123,8 @@ The object is an single object containing key values.
 }
 ```
 > Note: At least one key must be defined in the keys array when declaring a new instance.
+
+<br/>
 
 ## Examples
 You'll find an example of the matching in [the demo directory](https://github.com/gert-janwille/WMA/tree/master/demo).
