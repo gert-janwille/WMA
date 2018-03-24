@@ -1,5 +1,3 @@
-# WMA - Matching Algorithm
-
 <div align="center">
   <a href="https://github.com/gert-janwille/WMA">
     <img width="300"" src="https://raw.github.com/gert-janwille/WMA/master/docs/wma.png">
@@ -15,7 +13,7 @@
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Gert-Jan Wille](https://img.shields.io/badge/Author-gert--janwille-yellow.svg)
 
-
+# WMA - Matching Algorithm
 
 ## Install
 
@@ -52,8 +50,10 @@ Making new instance of the WMA Class
 ```javascript
 const wma = new WMA({
   source: data,               // The object array
-  matchIndex: 10,                 // Optional - add number on 10 first items.
+  matchIndex: 10,             // Optional - add number on 10 first items.
   showOriginal: true,         // Optional - keep same matching object in results.
+  decimals: 2,                // Optional - Numbers of decimals for matching percent.
+  verbose: true,              // Optional - Give output.
   keys: [                     // Array of all keys.
     {
       key: `matching-one`,    // Name of the key.
@@ -65,29 +65,123 @@ const wma = new WMA({
 ```
 
 #### `source`
+This is simply the full dataset, the object array with all the matching objects.
 
 #### `matchIndex`
+_optional_ - If you define this the output object will contain a key `matchIndex`. This can be used for pagination. If the matchIndex is default set to 10. This means every 10the object the index will increase.
 
 #### `showOriginal`
-
-#### `Keys`
+_optional_ - If this is set to `True`. The result array will contain the object of matching if this object is in the array. Default it's set `False`.
 
 #### `decimals`
+_optional_ - If you define this param each item  in item of your result array will contain a percent with 2 digits after the comma. Default it set to `2`.
 
 #### `verbose`
+_optional_ - Default set `False`. If set `True`, you can see output of the library in your console.
+
+#### `Keys`
+Keys is an object array that define every matching key with a multiplier. The highest multiplier has the most impact on the matching result.
+
+```javascript
+keys: [
+  {
+    key: 'string',
+    m: number
+  },
+  {
+    key: 'height',
+    m: 10
+  }
+  ...
+]
+```
+You can define as many keys as you want. The multiplier can have a positive or negative number.
 
 
 ### Match
+The match is a function that allows you to match any object to the defined object array.
 
 ```javascript
-wma.match(object-to-match);
+wma.match({
+  id: 1,
+  height: 10,
+  width: 5,
+  color: 'purple'
+});
 ```
 
 #### `object`
+The object is an single object containing key values.
+```javascript
+{
+  id: 1,
+  height: 10,
+  width: 5,
+  color: 'purple'
+}
+```
+> Note: At least one key must be defined in the keys array when declaring a new instance.
+
+## Examples
+You'll find an example of the matching in [the demo directory](https://github.com/gert-janwille/WMA/tree/master/demo).
+
+Feel free to contribute more!
+
+
+## Running the tests
+We use Jest for testing. If you want to run these tests type folowing command in your terminal.
+
+using npm:
+```bash
+$ npm run test
+```
+
+using yarn:
+```bash
+$ yarn test
+```
+
+All testes are located in [the test directory](https://github.com/gert-janwille/WMA/tree/master/test). Some included are:
+
+* [Math test](https://github.com/gert-janwille/WMA/blob/master/test/math.test.js)
+* [WMA test](https://github.com/gert-janwille/WMA/blob/master/test/wma.test.js)
+
+Feel free to contribute more!
+
+## FAQ
+<details>
+
+<summary>Can I write unit tests with this library?</summary>
+
+Definitely yes! You can write unit and integration tests with this library.The tests in this project show several examples of unit testing with this library.
+
+</details>
+
+<details>
+
+<summary>Can I hide the matching object in the results?</summary>
+
+Yes you can set a parameter when declaring an new instance: `showOriginal: true || false`.
+
+</details>
 
 ## Contributing
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+
+Write code in [the src directory](https://github.com/gert-janwille/WMA/tree/master/src). The source code will compile and placed in [the lib directory](https://github.com/gert-janwille/WMA/tree/master/lib). Open a browser an serve to `localhost:3000` and you'll see the contents of [the demo directory](https://github.com/gert-janwille/WMA/tree/master/demo) that use the new compiled WMA Library.
+
+If you want to contribute you need to install all packages who are required and start the compiler. Just use the command:
+
+using npm:
+```bash
+$ npm install && npm run start
+```
+
+using yarn:
+```bash
+$ yarn && yarn start
+```
 
 ## Versioning
 
