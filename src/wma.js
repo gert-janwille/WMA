@@ -29,7 +29,7 @@ class WMA {
     const oresult = output({
       max,
       results,
-      matchIndex: this.matchIndex,
+      index: this.matchIndex,
       decimals: this.decimals
     });
 

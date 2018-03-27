@@ -34,7 +34,7 @@ export const calculateItemDistance = ({keys, array, obj, showOriginal}) => {
   keys.map(({key, m}) => {
     array.map(i => {
       const {id} = i;
-  
+
       if (!(key in i) || !obj[key] || id === obj.id && !showOriginal) return;
       if (!dists[id]) dists[id] = [];
 
@@ -54,7 +54,7 @@ export const calculateResults = (d, a) => {
 
     results.push({
       score,
-      item: a.filter(i => i.id === id)[0],
+      item: a.filter(i => i.id.toString() === id.toString())[0],
     });
   }
 

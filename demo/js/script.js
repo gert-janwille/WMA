@@ -1,13 +1,13 @@
 /*eslint no-undef: 0*/
 
 const match = {
-  // id: `5gg210dfc13ae60c40000ea`,
-  // name: `Lau`,
-  // ebu: 0.24,
+  id: `5gg210dfc13ae60c40000ea`,
+  name: `Lau`,
+  ebu: 0.24,
   alc: 43,
-  // color: `Red`,
-  // cdex: 0.0421,
-  // bitterheid: 0.2,
+  color: `Red`,
+  cdex: 0.0421,
+  bitterheid: 0.2,
 };
 
 const match2 = {
@@ -22,10 +22,10 @@ const match2 = {
 
 
 const init = ({data}) => {
-  
+
   const wma = new WMA({
     source: data,
-    output: 10,
+    matchIndex: 10,
     showOriginal: true,
     verbose: 1,
     keys: [
@@ -44,7 +44,7 @@ const init = ({data}) => {
 };
 
 const fetchData = () => {
-  fetch(`./demo/data/dataset.json`)
+  fetch(`./demo/data/full.json`)
     .then(r => r.json())
     .then(data => init(data));
 };
